@@ -1,0 +1,19 @@
+; ----------------------------------------------------------------------
+; MF query with a single grouping variable (one extra scan).
+; Equivalent ESQL:
+;   select cust, sum(ny.quant)
+;   from   sales
+;   group  by cust : ny
+;   such   that ny.state = 'NY'
+; ----------------------------------------------------------------------
+SELECT ATTRIBUTE(S):
+cust, 1_sum_quant
+NUMBER OF GROUPING VARIABLES(n):
+1
+GROUPING ATTRIBUTES(V):
+cust
+F-VECT([F]):
+1_sum_quant
+SELECT CONDITION-VECT([sigma]):
+1.state='NY'
+HAVING_CONDITION(G):

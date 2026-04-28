@@ -1,0 +1,19 @@
+; ----------------------------------------------------------------------
+; Plain group-by query (no grouping variables, just a WHERE filter).
+; Equivalent SQL:
+;   select cust, prod, avg(quant), max(quant)
+;   from   sales
+;   where  year = 2009
+;   group  by cust, prod
+; ----------------------------------------------------------------------
+SELECT ATTRIBUTE(S):
+cust, prod, 0_avg_quant, 0_max_quant
+NUMBER OF GROUPING VARIABLES(n):
+0
+GROUPING ATTRIBUTES(V):
+cust, prod
+F-VECT([F]):
+0_avg_quant, 0_max_quant
+SELECT CONDITION-VECT([sigma]):
+0.year=2009
+HAVING_CONDITION(G):
