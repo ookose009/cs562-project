@@ -2,7 +2,7 @@
 CS 562 - The Project
 MF / EMF query processing engine.
 
-Authors: Olisa Okose & Hans Iselborn      CWIDs: 20020781, 
+Authors: Olisa Okose & Hans Iselborn      CWIDs: 20020781, 10461623
 
 Reads the 6 Phi operands from a file or interactively, then writes a
 Python program (_generated.py) that runs the H-table algorithm against
