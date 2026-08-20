@@ -11,8 +11,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install dependencies
+
+      - name: Install project dependencies
         run: pip install -r requirements.txt
+
+      - name: Install security tools
+        run: pip install pip-audit bandit
+
+      - name: Run pip-audit
+        run: pip-audit -r requirements.txt
+
+      - name: Run Bandit
+        run: bandit -r . -ll -f json -o bandit-report.json
+
+      - name: Upload Bandit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bandit-report
+          path: bandit-report.json
+
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
